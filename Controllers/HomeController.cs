@@ -15,12 +15,12 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        return View("Index");
     }
 
-    public IActionResult Privacy()
-    {
-        return View();
+    public IActionResult ConfigurarJuego(){
+        Juegos.InicializarJuego();
+        return View("ConfigurarJuego");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
