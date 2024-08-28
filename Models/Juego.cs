@@ -30,8 +30,10 @@ public class Juegos{
     preguntas=ListaPreguntas;  
 }
  public static Preguntas ObtenerProximaPregunta(){
-    Preguntas Pregunta;
+    Preguntas Pregunta=null;
+    if(contador<preguntas.Count()){
     Pregunta=preguntas[contador];
+    }
     return Pregunta;
 }
 public static List<Respuestas>? ObtenerProximasRespuestas(int idPregunta){

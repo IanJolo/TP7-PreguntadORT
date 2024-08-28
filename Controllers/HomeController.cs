@@ -20,8 +20,37 @@ public class HomeController : Controller
 
     public IActionResult ConfigurarJuego(){
         Juegos.InicializarJuego();
+        ViewBag.Categorias=BD.ObtenerCategorias();
+        ViewBag.Dificultades=BD.ObtenerDificultades();
         return View("ConfigurarJuego");
     }
+
+    public IActionResult Comenzar(string username, int dificultad, int categoria){
+        Juegos.CargarPartida(username,dificultad,categoria);
+        return View();
+    }
+
+     public IActionResult Jugar(){
+        ViewBag.Pregunta=Juegos.ObtenerProximaPregunta();
+         if(ViewBag.Pregunta!=null){
+            ViewBag.Respuestas=Juegos.ObtenerProximasRespuestas(ViewBag.Pregunta.idPregunta);      
+            return View("Juego"); 
+        }else {
+            return View("Fin");
+        }
+       
+    }
+[HttpPost]
+public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
+    foreach(Respuestas respuesta in ViewBag.Respuestas){
+        if(respuesta.Correcta==true){
+            ViewBag.RespuestaCorrecta=respuesta;
+        }
+    }
+    ViewBag.FueCorrecta=Juegos.VerificarRespuesta(idPregunta,idRespuesta);
+    return View("Respuesta");
+}
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
