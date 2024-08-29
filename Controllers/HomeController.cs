@@ -29,7 +29,12 @@ public class HomeController : Controller
         Juegos.CargarPartida(username,dificultad,categoria);
         return View();
     }
-
+    public IActionResult Creditos(){
+        return View("Creditos");
+    }
+    public IActionResult RankingGlobal(){
+        return View("RankingGlobal");
+    }
      public IActionResult Jugar(){
         ViewBag.Pregunta=Juegos.ObtenerProximaPregunta();
          if(ViewBag.Pregunta!=null){
@@ -50,6 +55,13 @@ public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
     ViewBag.FueCorrecta=Juegos.VerificarRespuesta(idPregunta,idRespuesta);
     return View("Respuesta");
 }
+
+
+
+
+
+
+
 
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

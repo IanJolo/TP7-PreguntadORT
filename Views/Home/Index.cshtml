@@ -1,3 +1,27 @@
-﻿<div class="main-creditos">
-<h1>Este juego fue desarrollado por Ian Jolodovsky, Ivan Kovadloff y Abril Varela Sica</h1>
+﻿<header class="header-index">
+  <nav>
+    <ul>
+      <li><a href='@Url.Action("Creditos","Home")'>Creditos</a></li>
+      <li><a href='@Url.Action("RankingGlobal","Home")'>Ranking</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="main-start">
+  <section>
+    <div class="container main-div">
+      <img src="images/logoJuego.webp" class="img-logo-index">
+      <h1 class="texto-index">¡Bienvenido a Cerebrizate!</h1>
+      <p class="slogan-index">El juego donde tu mente es el mejor aliado</p>
+      <div class="BotonesIndex">
+        <a href='@Url.Action("InicioSesion","Home")'>
+          <button class="play-button" onclick="playGame()">Ingreso</button>
+        </a>
+        <a href='@Url.Action("Registrarse","Home")'>
+          <button class="play-button" onclick="playGame()">Registrarse</button>
+        </a>
+      </div>
+    </div>
+  </section>
 </div>
+<script src="script.js"></script>
