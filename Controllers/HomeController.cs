@@ -35,6 +35,9 @@ public class HomeController : Controller
     public IActionResult RankingGlobal(){
         return View("RankingGlobal");
     }
+    public IActionResult InicioSesion(){
+        return View("InicioSesion");
+    }
      public IActionResult Jugar(){
         ViewBag.Pregunta=Juegos.ObtenerProximaPregunta();
          if(ViewBag.Pregunta!=null){
