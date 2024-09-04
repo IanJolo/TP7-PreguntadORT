@@ -38,6 +38,9 @@ public class HomeController : Controller
     public IActionResult InicioSesion(){
         return View("InicioSesion");
     }
+    public IActionResult Registrarse(){
+        return View("Registrarse");
+    }
      public IActionResult Jugar(){
         ViewBag.Pregunta=Juegos.ObtenerProximaPregunta();
          if(ViewBag.Pregunta!=null){

@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Ruleta Interactiva";
+}
+
+<section class="body-ruleta">
+<div class="container-ruleta">
+    <div class="wheel-container">
+        <div class="pointer"></div>
+       <div class="wheel">
+    <div class="wheel-section"><span>Geografía</span></div>
+    <div class="wheel-section"><span>Deportes</span></div>
+    <div class="wheel-section"><span>Entretenimiento</span></div>
+    <div class="wheel-section"><span>Ciencia</span></div>
+    <div class="wheel-section"><span>Historia</span></div>
+</div>
+
+    </div>
+    <button onclick="spinWheel()">Girar</button>
+    <p id="result"></p>
+</div>
+<section>
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}
