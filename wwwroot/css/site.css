@@ -280,7 +280,76 @@ margin-bottom:2%;
   width:10%;
 }
 
-/**/
+/*Header landing*/
+.iconos-land img{
+  width: 5%;
+  padding-right: 2%;
+  padding-left: 1%;
+}
+
+.body-landing{
+  background-color: cadetblue;
+}
+
+.iconos-land{
+  display: flex;
+  flex-direction: row;
+}
+
+/*Landing page*/
+
+.header-index-1 {
+  display:flex;
+  justify-content: center;
+  margin-left:27%;
+  width: 15%;
+  height: 6vh;
+  background-color: cadetblue;
+  font-family: "Poppins", sans-serif;
+  border-radius: 20px;
+}
+
+div .nav-container-1{
+  padding:0;
+  margin-bottom: 0;
+}
+
+.nav-container-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-index-1 div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-index-1  div ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;  
+  margin: 0 15px; 
+
+}
+
+
+.header-index-1  ul li a {
+  padding: 10px 20px; 
+  border-radius: 10px;
+  text-decoration: none;
+  color: black;
+  background-color: transparent; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.header-index-1  ul li a:hover {
+  background-color: rgb(80, 123, 124);
+  color: #fff;
+}
+
 
 h1 {
   margin-bottom: 20px;

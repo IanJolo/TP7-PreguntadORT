@@ -1,6 +1,34 @@
+<div class= "body-landing">
+    <div class= "iconos-land">
+            <img src="/images/rayo.svg">
+            <img src="/images/oro.svg"> 
+            <img src="/images/star-solid.svg"> 
+        <div class="header-index-1">
+            <div class="nav-container-1">
+                <ul>
+                <li><a href='@Url.Action("Creditos","Home")'>Créditos</a></li>
+                <li><a href='@Url.Action("RankingGlobal","Home")'>Ranking</a></li>
+                </ul>
+            </div>
+        </div>
+  </div>
+</div>
 
-<header>
-    <img src="/images/oro.svg">
-</header>
 
-<h1></h1>
+<div class="main-start">
+    <section>
+      <div class="container-index main-div">
+        <h1 class="title-land">¡A jugar!</h1>
+        <p class="text-land">¿Estás listo para demostrar tus conocimientos?</p>
+        <div class="BotonesIndex">
+          <a href='@Url.Action("InicioSesion","Home")'>
+            <button class="play-button" onclick="playGame()">Jugar</button>
+          </a>
+          <a href='@Url.Action("Registrarse","Home")'>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+<script src="script.js"></script>
+</div>
