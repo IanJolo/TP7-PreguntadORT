@@ -1,0 +1,17 @@
+<header class="header-registro">
+  <nav>
+      <a href='@Url.Action("Index","Home")'><img src="../images/logoJuego.webp" class="img-header-inicio"></a>
+  </nav>
+</header>   
+
+
+<main class="main-start">
+    <div class="container main-div">
+        <h1>Iniciar Sesion</h1>
+        <form action='@Url.Action("ValidarInicio","Home")'>
+        <p class="texto-ingreso">Nombre de usuario:</p><input type="text"  name="nombreUsuario" class="input-ingreso">
+        <p class="texto-ingreso">Foto de Perfil (URL):</p><input type="text" name="foto" class="input-ingreso">
+        <p class="texto-ingreso"></p><input type="submit" value="Ingresar"name="contra" class="input-submit-ingreso">
+        </form>
+    </div>
+</main>

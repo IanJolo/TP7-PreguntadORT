@@ -36,10 +36,14 @@ public class HomeController : Controller
         return View("RankingGlobal");
     }
     public IActionResult InicioSesion(){
-        return View("InicioSesion");
+        return View("Ingreso");
     }
-    public IActionResult Registrarse(){
-        return View("Registrarse");
+    public IActionResult ValidarInicio(string nombreUsuario, string foto){
+        BD.InicioSesion(nombreUsuario, foto);
+        return Redirect("LandingPage");
+    }
+    public IActionResult LandingPage(){
+        return View("LandingPage");
     }
      public IActionResult Jugar(){
         ViewBag.Pregunta=Juegos.ObtenerProximaPregunta();
@@ -56,6 +60,8 @@ public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
     foreach(Respuestas respuesta in ViewBag.Respuestas){
         if(respuesta.Correcta==true){
             ViewBag.RespuestaCorrecta=respuesta;
+        }else {
+            return View("Fin");
         }
     }
     ViewBag.FueCorrecta=Juegos.VerificarRespuesta(idPregunta,idRespuesta);

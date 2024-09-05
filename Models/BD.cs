@@ -12,7 +12,7 @@ public static class BD{
             _ListadoCategoria=db.Query<Categoria>(sql).ToList();
         }
         return _ListadoCategoria;
-    }
+   }
      public static List<Dificultades> ObtenerDificultades(){
         List<Dificultades> _ListadoDificultad=new List<Dificultades>();
         using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -49,4 +49,21 @@ public static class BD{
         }
         return ListaRespuesta;
     }
+
+    public static void InicioSesion(string usuario, string foto){
+       
+        int usuario_id;
+        using(SqlConnection db= new SqlConnection(_connectionString)){
+            string sql="SELECT idUsuario from Usuarios where nombre=@pUsuario";
+            usuario_id = db.QueryFirstOrDefault<int>(sql, new {pUsuario = usuario});
+        }
+            if (usuario_id==0){
+                using(SqlConnection db1= new SqlConnection(_connectionString)){
+            string sql1="INSERT into Usuarios (nombre, foto) VALUES (@usuarito, @fotito)";
+            int cant= db1.Execute(sql1, new {usuarito = usuario, fotito=foto});
+            
+            }
+        }
+    
+}
 }
