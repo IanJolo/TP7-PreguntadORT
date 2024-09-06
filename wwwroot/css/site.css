@@ -282,18 +282,34 @@ margin-bottom:2%;
 
 /*Header landing*/
 .iconos-land img{
-  width: 5%;
-  padding-right: 2%;
-  padding-left: 1%;
+  width: 7vh;
+  padding:0.5%;
 }
 
 .body-landing{
   background-color: cadetblue;
+  display: flex;
+  width:100%;
+  justify-content: space-between;
 }
 
 .iconos-land{
   display: flex;
   flex-direction: row;
+  height:10vh;
+  align-items: center;
+  justify-content: center;
+}
+
+/*LANDING-PAGE*/
+.punto-landing{
+  display: flex;
+  align-items: center;
+}
+.img-usu-landing{
+  border-radius:50%;
+  width:10vh;
+  padding: 0.5%;
 }
 
 /*Landing page*/
@@ -309,15 +325,17 @@ margin-bottom:2%;
   border-radius: 20px;
 }
 
-div .nav-container-1{
-  padding:0;
-  margin-bottom: 0;
-}
+
+
 
 .nav-container-1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top:11%;
+  display: flex;
+  align-items: center;
+  margin-left:1650%;
 }
 
 .header-index-1 div{
@@ -446,3 +464,5 @@ h1 {
 .hidden {
   display: none;
 }
+
+

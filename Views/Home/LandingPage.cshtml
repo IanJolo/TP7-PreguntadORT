@@ -1,8 +1,10 @@
 <div class= "body-landing">
     <div class= "iconos-land">
             <img src="/images/rayo.svg">
-            <img src="/images/oro.svg"> 
-            <img src="/images/star-solid.svg"> 
+                      <p class="punto-landing">@ViewBag.DatosUsuario.racha</p>
+              <img src="/images/oro.svg"> 
+              <img src="/images/star-solid.svg"> 
+                      <p class="punto-landing">@ViewBag.DatosUsuario.puntaje</p>
         <div class="header-index-1">
             <div class="nav-container-1">
                 <ul>
@@ -11,7 +13,9 @@
                 </ul>
             </div>
         </div>
-  </div>
+
+    </div>
+        <img src="@ViewBag.DatosUsuario.foto" class="img-usu-landing">
 </div>
 
 
@@ -24,7 +28,7 @@
           <a href='@Url.Action("InicioSesion","Home")'>
             <button class="play-button" onclick="playGame()">Jugar</button>
           </a>
-          <a href='@Url.Action("Registrarse","Home")'>
+          <a href='@Url.Action("ConfigurarJuego","Home")'>
           </a>
         </div>
       </div>

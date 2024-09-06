@@ -40,9 +40,16 @@ public class HomeController : Controller
     }
     public IActionResult ValidarInicio(string nombreUsuario, string foto){
         BD.InicioSesion(nombreUsuario, foto);
-        return Redirect("LandingPage");
+        return RedirectToAction("LandingPage", new{nombreUsuario});
     }
-    public IActionResult LandingPage(){
+    public IActionResult LandingPage(string nombreUsuario){
+        ViewBag.DatosUsuario=BD.ObtenerInfoUsuario(nombreUsuario);
+        if(ViewBag.DatosUsuario.puntaje==null){
+            ViewBag.DatosUsuario.puntaje=0;
+        }
+        if(ViewBag.DatosUsuario.racha==null){
+            ViewBag.DatosUsuario.racha=0;
+        }
         return View("LandingPage");
     }
      public IActionResult Jugar(){

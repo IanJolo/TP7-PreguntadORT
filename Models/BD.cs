@@ -66,4 +66,13 @@ public static class BD{
         }
     
 }
+
+public static Usuario ObtenerInfoUsuario(string nombreUsuario){
+    Usuario infoUSuario=new Usuario();
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+            string sql= "SELECT * from Usuarios where nombre=@nombresito";
+            infoUSuario=db.QueryFirstOrDefault<Usuario>(sql, new{nombresito=nombreUsuario});
+        }
+    return infoUSuario;
+}
 }
