@@ -466,3 +466,24 @@ h1 {
 }
 
 
+.img-header-landing{
+  width:20%;
+}
+.header-landing{
+  background-color: rgb(125, 201, 204);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.centrar{
+  display: flex;
+  align-items: center;
+}
+.divs-img-landing{
+  display: flex;
+  flex-direction: row;
+}
+.perfil-header-landing{
+  display: flex;
+  flex-direction: row;
+}

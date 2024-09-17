@@ -1,44 +1,26 @@
-<div class= "body-landing">
-    <div class= "iconos-land">
-            <img src="/images/rayo.svg">
-                      <p class="punto-landing">@ViewBag.DatosUsuario.racha</p>
-              <img src="/images/oro.svg"> 
-              <img src="/images/star-solid.svg"> 
-                      <p class="punto-landing">@ViewBag.DatosUsuario.puntaje</p>
-        <div class="header-index-1">
-            <div class="nav-container-1">
-                <ul>
-                <li><a href='@Url.Action("Creditos","Home")'>Créditos</a></li>
-                <li><a href='@Url.Action("RankingGlobal","Home")'>Ranking</a></li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-        <img src="@ViewBag.DatosUsuario.foto" class="img-usu-landing">
-</div>
-
-<header>
-  <section>
-    <div>
-      <img src="">
+<header class="header-landing">
+  <section class="divs-img-landing">
+    <div class="divs-img-landing">
+      <img src="/images/bolt-solid.svg" class="img-header-landing">
       <p class="punto-landing">@ViewBag.DatosUsuario.racha</p>
     </div>
-      <img src="">
+    <div class="divs-img-landing">
+      <img src="/images/coins-solid.svg" class="img-header-landing">
       <p></p>
     </div>
-      <img src="">
+    <div class="divs-img-landing">
+      <img src="/images/star-solid.svg" class="img-header-landing">
       <p class="punto-landing">@ViewBag.DatosUsuario.puntaje</p>
     </div>
   </section>
 
-<nav>
-  <ul>
+<nav class="header-index centrar">
+  <ul class="nav-container">
     <li><a href='@Url.Action("Creditos","Home")'>Créditos</a></li>
     <li><a href='@Url.Action("RankingGlobal","Home")'>Ranking</a></li>
   </ul>
 </nav>
-<div>
+<div class="perfil-header-landing">
   <img src="@ViewBag.DatosUsuario.foto" class="img-usu-landing">
   <p>@ViewBag.DatosUsuario.nombre</p>
 </div>
