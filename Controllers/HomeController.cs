@@ -25,9 +25,13 @@ public class HomeController : Controller
         return View("ConfigurarJuego");
     }
 
-    public IActionResult Comenzar(string username, int dificultad, int categoria){
-        Juegos.CargarPartida(username,dificultad,categoria);
-        return View();
+    public IActionResult Comenzar( int dificultad, int categoria){
+        List<Preguntas> preguntas=Juegos.CargarPartida(dificultad,categoria);
+        if(preguntas==null){
+        return Redirect("ConfigurarJuego");
+        }else {
+            return Redirect(Url.Action("Jugar", "Home", new {categoria}));
+        }
     }
     public IActionResult Creditos(){
         return View("Creditos");
@@ -40,7 +44,7 @@ public class HomeController : Controller
     }
     public IActionResult ValidarInicio(string nombreUsuario, string foto){
         BD.InicioSesion(nombreUsuario, foto);
-        return RedirectToAction("LandingPage", new{nombreUsuario});
+        return Redirect(Url.Action("LandingPage", "Home", new{nombreUsuario}));
     }
     public IActionResult LandingPage(string nombreUsuario){
         ViewBag.DatosUsuario=BD.ObtenerInfoUsuario(nombreUsuario);
@@ -52,15 +56,25 @@ public class HomeController : Controller
         }
         return View("LandingPage");
     }
-     public IActionResult Jugar(){
-        ViewBag.Pregunta=Juegos.ObtenerProximaPregunta();
-         if(ViewBag.Pregunta!=null){
-            ViewBag.Respuestas=Juegos.ObtenerProximasRespuestas(ViewBag.Pregunta.idPregunta);      
-            return View("Juego"); 
-        }else {
-            return View("Fin");
+     public IActionResult Jugar(int categoria){
+        if(categoria==-1){
+            return View("Juego");
+        }else{
+            return View("MomentoPreg");
         }
+        
+        
        
+    }
+
+    public IActionResult MomentoPreg(){
+        ViewBag.Pregunta=Juegos.ObtenerProximaPregunta();
+         if(ViewBag.Pregunta==null){
+            ViewBag.Respuestas=Juegos.ObtenerProximasRespuestas(ViewBag.Pregunta.idPregunta);      
+            return View("Fin"); 
+         }else {
+        return View("MomentoPreg");
+         }
     }
 [HttpPost]
 public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
@@ -74,6 +88,12 @@ public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
     ViewBag.FueCorrecta=Juegos.VerificarRespuesta(idPregunta,idRespuesta);
     return View("Respuesta");
 }
+
+public IActionResult Juego(){
+    return View("Juego");
+}
+
+
 
 
 

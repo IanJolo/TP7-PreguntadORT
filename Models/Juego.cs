@@ -25,13 +25,15 @@ public class Juegos{
     List<Dificultades> ListaDificultades=BD.ObtenerDificultades();
     return ListaDificultades;
 }
- public static void CargarPartida(string username, int dificultad, int categoria){
+ public static List<Preguntas> CargarPartida( int dificultad, int categoria){
     List<Preguntas> ListaPreguntas=BD.ObtenerPreguntas(dificultad, categoria);
     preguntas=ListaPreguntas;  
+    Console.WriteLine("Longitud: " + preguntas.Count);
+    return ListaPreguntas;
 }
  public static Preguntas ObtenerProximaPregunta(){
-    Preguntas Pregunta=null;
-    if(contador<preguntas.Count()){
+    Preguntas Pregunta= new Preguntas();
+    if(contador < preguntas.Count){
     Pregunta=preguntas[contador];
     }
     return Pregunta;

@@ -25,14 +25,14 @@ function spinWheel() {
         createConfetti();
 
         // Calcular la opción seleccionada basada en el ángulo final
-        const options = ['BESO', 'CHUPITO', 'TORTAZO', 'JUEGO'];
+        const options = ['GEOGRAFIA', 'DEPORTE', 'CIENCIA', 'HISTORIA'];
         let selectedOption = options[randomSection];
 
         // Ajustar el resultado para los casos específicos
-        if (selectedOption === 'JUEGO') {
-            selectedOption = 'CHUPITO';
-        } else if (selectedOption === 'CHUPITO') {
-            selectedOption = 'JUEGO';
+        if (selectedOption === 'HISTORIA') {
+            selectedOption = 'DEPORTE';
+        } else if (selectedOption === 'DEPORTE') {
+            selectedOption = 'HISTORIA';
         }
 
         result.innerText = selectedOption;
@@ -41,8 +41,8 @@ function spinWheel() {
         // Redirigir después de 15 segundos
         setTimeout(() => {
             clearConfetti();
-            window.location.href = 'https://tu-web-de-eleccion.com';
-        }, 15000);
+            window.location.href = 'http://localhost:5245/Home/MomentoPreg';
+        }, 2500);
     }, 5000); // La ruleta gira durante 5 segundos
 
     // Rehabilitar el botón después de 15 segundos

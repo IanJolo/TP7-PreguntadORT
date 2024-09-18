@@ -26,10 +26,10 @@ public static class BD{
             List<Preguntas> _ListadoPreguntas=new List<Preguntas>();
             using(SqlConnection db = new SqlConnection(_connectionString)){
             if(dificultad==-1 && categoria==-1){
-                 sql= "SELECT * from Preguntas order by NEWID()";
+                sql= "SELECT * from Preguntas order by NEWID()";
             _ListadoPreguntas=db.Query<Preguntas>(sql).ToList();
             }else if(categoria==-1){
-                 sql= "SELECT * from Preguntas where IdDificultad=@dififi order by NEWID()";
+                sql= "SELECT * from Preguntas where IdDificultad=@dififi order by NEWID()";
             _ListadoPreguntas=db.Query<Preguntas>(sql, new {dififi=dificultad}).ToList();
             }else if(dificultad==-1){
              sql= "SELECT * from Preguntas where IdCategoria=@cateogr order by NEWID()";
