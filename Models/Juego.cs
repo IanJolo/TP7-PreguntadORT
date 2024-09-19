@@ -32,17 +32,13 @@ public class Juegos{
 }
  public static Preguntas ObtenerProximaPregunta(int CateRuleta){
     Preguntas Pregunta= new Preguntas();
-    do{
-        foreach(List<Preguntas> preg in preguntas.Values){
-            foreach(Preguntas preguntita in preg){
-            if (preguntita.IdCategoria == CateRuleta ){
-                Pregunta=preg[contador];
-            }
-            }
+    List<Preguntas> lalista=new List<Preguntas>();
+    foreach(int key in preguntas.Keys){
+        if(key==CateRuleta){
+            lalista=preguntas[key];
         }
-   
-    }while(Pregunta.IdCategoria!=CateRuleta || contador >= preguntas.Count );
-    
+    }  
+    Pregunta=lalista[0];         
     return Pregunta;
  }
 public static List<Respuestas>? ObtenerProximasRespuestas(int idPregunta){

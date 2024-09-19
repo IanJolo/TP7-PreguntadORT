@@ -41,7 +41,9 @@ function spinWheel() {
         // Redirigir después de 15 segundos
         setTimeout(() => {
             clearConfetti();
-            window.location.href = 'http://localhost:5245/Home/MomentoPreg';
+            
+            
+            window.location.href = 'http://localhost:5245/Home/MomentoPreg?nombrecategoria='+selectedOption;
         }, 2500);
     }, 5000); // La ruleta gira durante 5 segundos
 

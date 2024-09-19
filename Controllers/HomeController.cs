@@ -69,14 +69,26 @@ public class HomeController : Controller
        
     }
 
-    public IActionResult MomentoPreg(int idCategoRuleta){
+    public IActionResult MomentoPreg(string nombrecategoria){
+        int idCategoRuleta=1;
+        if(nombrecategoria=="HISTORIA"){
+            idCategoRuleta=2;
+        }else if(nombrecategoria=="CIENCIA"){
+            idCategoRuleta=3;
+        }else if(nombrecategoria=="DEPORTE"){
+            idCategoRuleta=4;
+        }else if(nombrecategoria=="GEOGRAFIA"){
+            idCategoRuleta=1;
+        }else {
+            Console.WriteLine("ERROR");
+        }
         ViewBag.Pregunta=Juegos.ObtenerProximaPregunta(idCategoRuleta);
          if(ViewBag.Pregunta==null){
-            ViewBag.Respuestas=Juegos.ObtenerProximasRespuestas(ViewBag.Pregunta.idPregunta);      
             return View("Fin"); 
          }else {
+            ViewBag.Respuestas=Juegos.ObtenerProximasRespuestas(ViewBag.Pregunta.IdPregunta);      
         return View("MomentoPreg");
-         }
+        }
     }
 [HttpPost]
 public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
