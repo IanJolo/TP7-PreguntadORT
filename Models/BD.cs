@@ -21,25 +21,51 @@ public static class BD{
         }
         return _ListadoDificultad;
     }
-    public static List<Preguntas> ObtenerPreguntas(int dificultad, int categoria){
+    public static Dictionary<int, List<Preguntas>> ObtenerPreguntas(int dificultad, int categoria){
             string sql;
+            Dictionary<int, List<Preguntas>> DicCategorias = new Dictionary<int, List<Preguntas>>();
             List<Preguntas> _ListadoPreguntas=new List<Preguntas>();
+            List<Preguntas> _ListadoPreguntas2 = new List<Preguntas>(); 
+            List<Preguntas> _ListadoPreguntas3 = new List<Preguntas>(); 
+            List<Preguntas> _ListadoPreguntas4 = new List<Preguntas>(); 
             using(SqlConnection db = new SqlConnection(_connectionString)){
             if(dificultad==-1 && categoria==-1){
-                sql= "SELECT * from Preguntas order by NEWID()";
+                sql= "SELECT * from Preguntas where categoria=1 order by NEWID()";
             _ListadoPreguntas=db.Query<Preguntas>(sql).ToList();
+            sql= "SELECT * from Preguntas where categoria=2 order by NEWID()";
+            _ListadoPreguntas2=db.Query<Preguntas>(sql).ToList();
+            sql= "SELECT * from Preguntas  where categoria=3 order by NEWID()";
+            _ListadoPreguntas3=db.Query<Preguntas>(sql).ToList();
+            sql= "SELECT * from Preguntas where categoria=4 order by NEWID()";
+            _ListadoPreguntas4=db.Query<Preguntas>(sql).ToList();
+            DicCategorias.Add(1,_ListadoPreguntas);
+            DicCategorias.Add(2,_ListadoPreguntas2);
+            DicCategorias.Add(3,_ListadoPreguntas3);
+            DicCategorias.Add(4,_ListadoPreguntas4);
             }else if(categoria==-1){
-                sql= "SELECT * from Preguntas where IdDificultad=@dififi order by NEWID()";
-            _ListadoPreguntas=db.Query<Preguntas>(sql, new {dififi=dificultad}).ToList();
+                 sql= "SELECT * from Preguntas where IdCategoria=1 AND IdDificultad=@dififi order by NEWID() ";
+            _ListadoPreguntas=db.Query<Preguntas>(sql).ToList();
+            sql= "SELECT * from Preguntas where IdCategoria=2 AND IdDificultad=@dififi order by NEWID() ";
+            _ListadoPreguntas2=db.Query<Preguntas>(sql).ToList();
+            sql= "SELECT * from Preguntas where IdCategoria=3 AND IdDificultad=@dififi order by NEWID() ";
+            _ListadoPreguntas3=db.Query<Preguntas>(sql).ToList();
+            sql= "SELECT * from Preguntas where IdCategoria=4 AND IdDificultad=@dififi order by NEWID()";
+            _ListadoPreguntas4=db.Query<Preguntas>(sql).ToList();
+            DicCategorias.Add(1,_ListadoPreguntas);
+            DicCategorias.Add(2,_ListadoPreguntas2);
+            DicCategorias.Add(3,_ListadoPreguntas3);
+            DicCategorias.Add(4,_ListadoPreguntas4);
             }else if(dificultad==-1){
              sql= "SELECT * from Preguntas where IdCategoria=@cateogr order by NEWID()";
             _ListadoPreguntas=db.Query<Preguntas>(sql, new {cateogr=categoria}).ToList();
+            DicCategorias.Add(categoria,_ListadoPreguntas);
             }else {
                  sql= "SELECT * from Preguntas where IdCategoria=@cateogr AND IdDificultad=@dififi order by NEWID() ";
             _ListadoPreguntas=db.Query<Preguntas>(sql, new {cateogr=categoria, dififi=dificultad}).ToList();
+            DicCategorias.Add(categoria,_ListadoPreguntas);
             }
         }
-        return _ListadoPreguntas; 
+        return DicCategorias; 
     }
     public static List<Respuestas>? ObtenerRespuesta(int IdPregunta){
         List<Respuestas> ListaRespuesta;

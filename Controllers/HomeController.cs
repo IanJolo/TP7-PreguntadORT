@@ -26,11 +26,11 @@ public class HomeController : Controller
     }
 
     public IActionResult Comenzar( int dificultad, int categoria){
-        List<Preguntas> preguntas=Juegos.CargarPartida(dificultad,categoria);
+        Dictionary<int, List<Preguntas>> preguntas=Juegos.CargarPartida(dificultad,categoria);
         if(preguntas==null){
         return Redirect("ConfigurarJuego");
         }else {
-            return Redirect(Url.Action("Jugar", "Home", new {categoria}));
+            return Redirect(Url.Action("Jugar", "Home", new {categoria=categoria}));
         }
     }
     public IActionResult Creditos(){
@@ -57,18 +57,20 @@ public class HomeController : Controller
         return View("LandingPage");
     }
      public IActionResult Jugar(int categoria){
+        Console.WriteLine(categoria);
         if(categoria==-1){
             return View("Juego");
         }else{
-            return View("MomentoPreg");
+            return Redirect(Url.Action("MomentoPreg", "Home"));
+            
         }
         
         
        
     }
 
-    public IActionResult MomentoPreg(){
-        ViewBag.Pregunta=Juegos.ObtenerProximaPregunta();
+    public IActionResult MomentoPreg(int idCategoRuleta){
+        ViewBag.Pregunta=Juegos.ObtenerProximaPregunta(idCategoRuleta);
          if(ViewBag.Pregunta==null){
             ViewBag.Respuestas=Juegos.ObtenerProximasRespuestas(ViewBag.Pregunta.idPregunta);      
             return View("Fin"); 

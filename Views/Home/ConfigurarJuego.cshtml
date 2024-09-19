@@ -21,7 +21,7 @@
         <select required name="dificultad">
           <option value="">Seleccioná Dificultad</option>
         @foreach( Dificultades opcion in ViewBag.Dificultades){
-            <option value="@opcion">@opcion.Nombre</option>
+            <option value="@opcion.IdDificultad">@opcion.Nombre</option>
         }
         <option value="-1">Todas</option>
         </select>

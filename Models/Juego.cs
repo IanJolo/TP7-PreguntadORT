@@ -4,7 +4,7 @@ public class Juegos{
     private static string? username {get;set;}
     private static int puntajeActual{get;set;}
     private static int cantidadPreguntasCorrectas{get;set;}
-    private static List<Preguntas>? preguntas{get;set;}
+    private static Dictionary<int,List<Preguntas>> preguntas{get;set;}
     private static List<Respuestas>? respuestas{get;set;}
     public static int contador{get;set;}
 
@@ -25,22 +25,29 @@ public class Juegos{
     List<Dificultades> ListaDificultades=BD.ObtenerDificultades();
     return ListaDificultades;
 }
- public static List<Preguntas> CargarPartida( int dificultad, int categoria){
-    List<Preguntas> ListaPreguntas=BD.ObtenerPreguntas(dificultad, categoria);
-    preguntas=ListaPreguntas;  
-    Console.WriteLine("Longitud: " + preguntas.Count);
-    return ListaPreguntas;
+ public static Dictionary<int,List<Preguntas>> CargarPartida( int dificultad, int categoria){
+    Dictionary<int,List<Preguntas>> DicPreguntas=BD.ObtenerPreguntas(dificultad, categoria);
+    preguntas=DicPreguntas;  
+    return DicPreguntas;
 }
- public static Preguntas ObtenerProximaPregunta(){
+ public static Preguntas ObtenerProximaPregunta(int CateRuleta){
     Preguntas Pregunta= new Preguntas();
-    if(contador < preguntas.Count){
-    Pregunta=preguntas[contador];
-    }
+    do{
+        foreach(List<Preguntas> preg in preguntas.Values){
+            foreach(Preguntas preguntita in preg){
+            if (preguntita.IdCategoria == CateRuleta ){
+                Pregunta=preg[contador];
+            }
+            }
+        }
+   
+    }while(Pregunta.IdCategoria!=CateRuleta || contador >= preguntas.Count );
+    
     return Pregunta;
-}
+ }
 public static List<Respuestas>? ObtenerProximasRespuestas(int idPregunta){
     List<Respuestas>? respuestasPreguntas=BD.ObtenerRespuesta(idPregunta);
-    respuestas=respuestasPreguntas;
+    respuestas=respuestasPreguntas; 
     return respuestasPreguntas;
 }
 public static bool VerificarRespuesta(int idPregunta, int idRespuesta){
