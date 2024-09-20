@@ -56,4 +56,10 @@ public static bool VerificarRespuesta(int idPregunta, int idRespuesta){
     }
     return esCorrecto;
 }
+
+public static List<Respuestas> ObtenerRespuestas(){
+    List<Respuestas> listaRespuestas= new List<Respuestas>();
+    listaRespuestas=respuestas;
+    return listaRespuestas;
+}
 }

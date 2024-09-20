@@ -1,5 +1,7 @@
 <h1>@ViewBag.Pregunta.Enunciado</h1>
-
+<form action='@Url.Action("VerificarRespuesta","Home")' method="post">
 @foreach(Respuestas res in ViewBag.Respuestas){
-   <h2>@res.Contenido</h2>
+   <button value="@res.IdRespuesta" >@res.Contenido</button>
+<div type="hidden" value="@ViewBag.Pregunta.IdPregunta"></div>
 }
+</form>

@@ -92,6 +92,7 @@ public class HomeController : Controller
     }
 [HttpPost]
 public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
+    List<Respuestas> listaRespuestas=Juegos.ObtenerRespuestas();
     foreach(Respuestas respuesta in ViewBag.Respuestas){
         if(respuesta.Correcta==true){
             ViewBag.RespuestaCorrecta=respuesta;
