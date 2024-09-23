@@ -82,6 +82,7 @@ public class HomeController : Controller
             Console.WriteLine("ERROR");
         }
         ViewBag.Pregunta=Juegos.ObtenerProximaPregunta(idCategoRuleta);
+        ViewBag.CategoRuleta=idCategoRuleta;
          if(ViewBag.Pregunta==null){
             return View("Fin"); 
          }else {

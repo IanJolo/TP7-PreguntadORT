@@ -5,11 +5,10 @@
 @foreach (Respuestas res in ViewBag.Respuestas)
 {
     <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
-        <button name="idRespuesta" value="@contador">@res.Contenido</button>
+        <button name="idRespuesta" value=@res.IdRespuesta>@res.Contenido</button>
+        <input type="hidden" name="idPregunta" value=@ViewBag.Pregunta.IdPregunta />
+        <input type="hidden" name="idCategoria" value=@ViewBag.CategoRuleta />
     </form>
     contador++;
 }
-<form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
-    <input type="hidden" name="idPregunta" value="@ViewBag.Pregunta.IdPregunta" />
-    <input type="hidden" name="idCategoria" value="@ViewBag.Pregunta.IdCategoria" />
-</form>
+

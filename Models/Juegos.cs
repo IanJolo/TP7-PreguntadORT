@@ -48,18 +48,21 @@ public static List<Respuestas>? ObtenerProximasRespuestas(int idPregunta){
 }
 public static bool VerificarRespuesta(int idPregunta, int idRespuesta, int idCategoria){
     bool esCorrecto=false;
-    if(respuestas[idRespuesta].Correcta==true){
-        esCorrecto=true;
-        cantidadPreguntasCorrectas++;
-        if(preguntas[idCategoria][contador].IdDificultad==1){
-        puntajeActual=puntajeActual+100;
-        }else if(preguntas[idCategoria][contador].IdDificultad==2){
-        puntajeActual=puntajeActual+250;
-        }else {
-        puntajeActual=puntajeActual+500;   
+    foreach(Respuestas respuesta in respuestas){
+        if(respuesta.IdRespuesta == idRespuesta && respuesta.Correcta)
+            {
+            esCorrecto=true;
+            cantidadPreguntasCorrectas++;
+            if(preguntas[idCategoria][contador].IdDificultad==1){
+            puntajeActual=puntajeActual+100;
+            }else if(preguntas[idCategoria][contador].IdDificultad==2){
+            puntajeActual=puntajeActual+250;
+            }else {
+            puntajeActual=puntajeActual+500;   
+            }
+            contador++;
+            preguntas.Remove(idPregunta);
         }
-        contador++;
-        preguntas.Remove(idPregunta);
     }
     return esCorrecto;
 }
