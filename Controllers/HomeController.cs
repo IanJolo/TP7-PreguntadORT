@@ -98,12 +98,14 @@ public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
     foreach(Respuestas respuesta in listaRespuestas){
         if(respuesta.IdRespuesta == idRespuesta && respuesta.Correcta==true){
             ViewBag.RespuestaCorrecta=respuesta;
-        }else {
-            return View("Fin");
         }
     }
     ViewBag.FueCorrecta=Juegos.VerificarRespuesta(idPregunta,idRespuesta);
+    if(ViewBag.FueCorrecta==true){
     return View("Respuesta");
+    }else {
+            return View("Fin");
+        }
 }
 
 public IActionResult Juego(){
