@@ -92,9 +92,11 @@ public class HomeController : Controller
     }
 [HttpPost]
 public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
-    List<Respuestas> listaRespuestas=Juegos.ObtenerRespuestas();
-    foreach(Respuestas respuesta in ViewBag.Respuestas){
-        if(respuesta.Correcta==true){
+    List<Respuestas> listaRespuestas=new List<Respuestas>();
+    listaRespuestas=Juegos.ObtenerRespuestas();
+    ViewBag.respuestas = listaRespuestas;
+    foreach(Respuestas respuesta in listaRespuestas){
+        if(respuesta.IdRespuesta == idRespuesta && respuesta.Correcta==true){
             ViewBag.RespuestaCorrecta=respuesta;
         }else {
             return View("Fin");

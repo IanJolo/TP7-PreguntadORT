@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using Dapper;
 using System.Collections.Generic;
 public static class BD{
-   private static string _connectionString = @"Server = A-PHZ2-AMI-19;DataBase = PreguntadOrt;Trusted_Connection=True;";
+   private static string _connectionString = @"Server = A-PHZ2-CIDI-55;DataBase = PreguntadOrt;Trusted_Connection=True;";
 
    public static List<Categoria> ObtenerCategorias(){
         List<Categoria> _ListadoCategoria=new List<Categoria>();
@@ -100,5 +100,14 @@ public static Usuario ObtenerInfoUsuario(string nombreUsuario){
             infoUSuario=db.QueryFirstOrDefault<Usuario>(sql, new{nombresito=nombreUsuario});
         }
     return infoUSuario;
+}
+
+public static List<Usuario> ObtenerUsuarios(){
+     List<Usuario> _ListaUsuarios=new List<Usuario>();
+        using(SqlConnection db = new SqlConnection(_connectionString)){
+            string sql= "SELECT * from Usuarios";
+            _ListaUsuarios=db.Query<Usuario>(sql).ToList();
+        }
+        return _ListaUsuarios;
 }
 }
