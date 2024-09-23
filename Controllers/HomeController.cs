@@ -57,6 +57,7 @@ public class HomeController : Controller
         return View("LandingPage");
     }
      public IActionResult Jugar(int categoria){
+        ViewBag.DatosUsuario=BD.ObtenerInfoUsuario(nombreUsuario);
         if(categoria==-1){
             return View("Juego");
         }else{
@@ -101,6 +102,10 @@ public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta, int idC
         }
     }
     ViewBag.FueCorrecta=Juegos.VerificarRespuesta(idPregunta,idRespuesta, idCategoria);
+    int puntaje=Juegos.ObtenerPuntaje();
+     ViewBag.Puntaje=puntaje;
+     int contador=Juegos.ObtenerContador();
+     ViewBag.Contador=contador;
     return View("Respuesta");
 }
 

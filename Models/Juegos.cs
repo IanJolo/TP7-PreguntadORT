@@ -72,4 +72,11 @@ public static List<Respuestas> ObtenerRespuestas(){
     listaRespuestas=respuestas;
     return listaRespuestas;
 }
+
+public static int ObtenerPuntaje(){
+    return puntajeActual;
+}
+public static int ObtenerContador(){
+    return contador;
+}
 }

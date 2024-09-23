@@ -1,14 +1,23 @@
-<h1>@ViewBag.Pregunta.Enunciado</h1>
+<header>
+<h2>@ViewBag.DatosUsuario.nombre</h2>
+<h2>@ViewBag.DatosUsuario.puntaje</h2>
+</header>
+<h2>Pregunta Nro @ViewBag.Contador</h2>
+<h1 class="titulo-pregunta">@ViewBag.Pregunta.Enunciado</h1>
+<img src=@ViewBag.Pregunta.Foto>
 @{
     int contador = 0;
 }
+<div class="contenedor-respuestas">
 @foreach (Respuestas res in ViewBag.Respuestas)
 {
-    <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
-        <button name="idRespuesta" value=@res.IdRespuesta>@res.Contenido</button>
-        <input type="hidden" name="idPregunta" value=@ViewBag.Pregunta.IdPregunta />
-        <input type="hidden" name="idCategoria" value=@ViewBag.CategoRuleta />
+    <form action='@Url.Action("VerificarRespuesta", "Home")' method="post" class="form-respuesta">
+        <button type="submit" name="idRespuesta" value="@res.IdRespuesta" class="boton-respuesta">
+            @res.Contenido
+        </button>
+        <input type="hidden" name="idPregunta" value="@ViewBag.Pregunta.IdPregunta" />
+        <input type="hidden" name="idCategoria" value="@ViewBag.CategoRuleta" />
     </form>
     contador++;
 }
-
+</div>
