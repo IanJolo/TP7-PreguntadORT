@@ -43,16 +43,23 @@ public class Juegos{
  }
 public static List<Respuestas>? ObtenerProximasRespuestas(int idPregunta){
     List<Respuestas>? respuestasPreguntas=BD.ObtenerRespuesta(idPregunta);
-    respuestas=respuestasPreguntas; 
+    respuestas=respuestasPreguntas;
     return respuestasPreguntas;
 }
-public static bool VerificarRespuesta(int idPregunta, int idRespuesta){
+public static bool VerificarRespuesta(int idPregunta, int idRespuesta, int idCategoria){
     bool esCorrecto=false;
     if(respuestas[idRespuesta].Correcta==true){
         esCorrecto=true;
         cantidadPreguntasCorrectas++;
+        if(preguntas[idCategoria][contador].IdDificultad==1){
         puntajeActual=puntajeActual+100;
+        }else if(preguntas[idCategoria][contador].IdDificultad==2){
+        puntajeActual=puntajeActual+250;
+        }else {
+        puntajeActual=puntajeActual+500;   
+        }
         contador++;
+        preguntas.Remove(idPregunta);
     }
     return esCorrecto;
 }

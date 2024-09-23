@@ -57,7 +57,6 @@ public class HomeController : Controller
         return View("LandingPage");
     }
      public IActionResult Jugar(int categoria){
-        Console.WriteLine(categoria);
         if(categoria==-1){
             return View("Juego");
         }else{
@@ -91,7 +90,7 @@ public class HomeController : Controller
         }
     }
 [HttpPost]
-public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
+public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta, int idCategoria){
     List<Respuestas> listaRespuestas=new List<Respuestas>();
     listaRespuestas=Juegos.ObtenerRespuestas();
     ViewBag.respuestas = listaRespuestas;
@@ -100,12 +99,8 @@ public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
             ViewBag.RespuestaCorrecta=respuesta;
         }
     }
-    ViewBag.FueCorrecta=Juegos.VerificarRespuesta(idPregunta,idRespuesta);
-    if(ViewBag.FueCorrecta==true){
+    ViewBag.FueCorrecta=Juegos.VerificarRespuesta(idPregunta,idRespuesta, idCategoria);
     return View("Respuesta");
-    }else {
-            return View("Fin");
-        }
 }
 
 public IActionResult Juego(){

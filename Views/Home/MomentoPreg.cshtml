@@ -1,9 +1,15 @@
 <h1>@ViewBag.Pregunta.Enunciado</h1>
-@foreach(Respuestas res in ViewBag.Respuestas){
-<form action='@Url.Action("VerificarRespuesta","Home")' method="post">
-   <button name="idRespuesta" value="@res.IdRespuesta" >@res.Contenido</button>
-   </form>
+@{
+    int contador = 0;
 }
-<form action='@Url.Action("VerificarRespuesta","Home")' method="post">
-<div type="hidden" name="idPregunta" value="@ViewBag.Pregunta.IdPregunta"></div>
+@foreach (Respuestas res in ViewBag.Respuestas)
+{
+    <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
+        <button name="idRespuesta" value="@contador">@res.Contenido</button>
+    </form>
+    contador++;
+}
+<form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
+    <input type="hidden" name="idPregunta" value="@ViewBag.Pregunta.IdPregunta" />
+    <input type="hidden" name="idCategoria" value="@ViewBag.Pregunta.IdCategoria" />
 </form>

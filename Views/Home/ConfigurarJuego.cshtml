@@ -9,14 +9,6 @@
     <div class="container main-div">
         <h1>Configure su partida!</h1>
         <form action='@Url.Action("Comenzar","Home")' method= "post">
-        <p class="texto-ingreso">Categoria:</p>
-        <select required name="categoria">
-          <option>Seleccioná Categoria</option>
-        @foreach( Categoria opcion in ViewBag.Categorias){
-            <option value="@opcion.IdCategoria">@opcion.Nombre</option>
-        }
-         <option value="-1">Todas</option>
-        </select>
         <p class="texto-ingreso">Dificultad:</p>
         <select required name="dificultad">
           <option value="">Seleccioná Dificultad</option>
@@ -26,6 +18,8 @@
         <option value="-1">Todas</option>
         </select>
         <p class="texto-ingreso"></p><input type="submit" value="Ingresar"name="contra" class="input-submit-ingreso">
+            <input type="hidden" name="categoria" value="-1" />
         </form>
+        
     </div>
 </main>
