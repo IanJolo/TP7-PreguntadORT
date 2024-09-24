@@ -1,40 +1,33 @@
-<header class="header-landing">
-  <section class="divs-img-landing">
-    <div class="divs-img-landing">
-      <img src="/images/bolt-solid.svg" class="img-header-landing">
-      <p class="punto-landing">@ViewBag.DatosUsuario.racha</p>
-    </div>
-    <div class="divs-img-landing">
-      <img src="/images/coins-solid.svg" class="img-header-landing">
-      <p></p>
-    </div>
-    <div class="divs-img-landing">
-      <img src="/images/star-solid.svg" class="img-header-landing">
-      <p class="punto-landing">@ViewBag.DatosUsuario.puntaje</p>
-    </div>
-  </section>
+@{
+    if(ViewBag.DatosUsuario.puntaje == null){
+        ViewBag.DatosUsuario.puntaje = 0;
+    }
+    if(ViewBag.DatosUsuario.racha == null){
+        ViewBag.DatosUsuario.racha = 0;
+    }
+}
 
-<nav class="header-index centrar">
-  <ul class="nav-container">
-    <li><a href='@Url.Action("Creditos","Home")'>Créditos</a></li>
-    <li><a href='@Url.Action("RankingGlobal","Home")'>Ranking</a></li>
-  </ul>
-</nav>
-<div class="perfil-header-landing">
-  <img src="@ViewBag.DatosUsuario.foto" class="img-usu-landing">
-  <p>@ViewBag.DatosUsuario.nombre</p>
-</div>
+<header class="header-landing">
+    <div class="header-content">
+        <div class="divs-img-landing">
+            <img src="/images/star-solid.svg" class="img-header-landing">
+            <p class="punto-landing">@ViewBag.DatosUsuario.puntaje</p>
+        </div>
+        <div class="perfil-header-landing">
+            <img src="@ViewBag.DatosUsuario.foto" class="img-usu-landing">
+            <p class="nombre-usuarioo">@ViewBag.DatosUsuario.nombre</p>
+        </div>
+    </div>
 </header>
-<div class="main-start">
+  <div class="main-start">
     <section>
       <div class="container-index main-div">
-        <h1 class="title-land">¡A jugar!</h1>
-        <p class="text-land">¿Estás listo para demostrar tus conocimientos?</p>
+        <img src="/images/luchacerebros.jpg" class="img-logo-index">
+        <h1 class="texto-index">¡A Jugar!</h1>
+        <p class="slogan-index">¿Estás listo/a para demostrar tus conocimientos?</p>
         <div class="BotonesIndex">
           <a href='@Url.Action("ConfigurarJuego","Home")'>
             <button class="play-button" onclick="playGame()">Jugar</button>
-          </a>
-          <a href='@Url.Action("ConfigurarJuego","Home")'>
           </a>
         </div>
       </div>

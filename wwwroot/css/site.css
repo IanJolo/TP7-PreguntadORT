@@ -303,6 +303,7 @@ margin-bottom:2%;
 
 /*LANDING-PAGE*/
 .punto-landing{
+  margin:auto;
   display: flex;
   align-items: center;
 }
@@ -374,6 +375,7 @@ h1 {
 }
 
 .container-ruleta {
+  background-color: rgb(125, 201, 204);
   text-align: center;
 }
 
@@ -539,16 +541,22 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self:center ;
   gap: 1rem;
 }
 
 .form-respuesta {
+  display: contents;
   width: 100%;
 }
 
 .boton-respuesta {
+ 
   display: block;
-  width: 100%;
+  width: 50%;
   padding: 15px;
   font-size: 1.2rem;
   font-family: "Poppins", sans-serif;
@@ -573,14 +581,14 @@ h1 {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-color: #0077ff;
+  background-color: cadetblue;
   color: white;
   font-family: "Poppins", sans-serif;
-  border-radius: 10px;
   margin-bottom: 20px;
 }
 
 .nombre-usuario, .puntaje-usuario {
+  color:white;
   font-size: 1.5rem;
   margin: 0;
 }
@@ -650,6 +658,7 @@ h1 {
 }
 
 .boton-girar {
+  margin-bottom:50%;
   margin-top: 20px;
   padding: 15px 30px;
   font-size: 1.2rem;
@@ -673,5 +682,283 @@ h1 {
 
 .hidden {
   display: none;
+}
+
+.main-indexx {
+  background-color: rgb(125, 201, 204);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main-indexx section {
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.containerr {
+  text-align: center;
+  background-color: cadetblue;
+  width: 80%;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 3em;
+  color: #333;
+}
+
+.slogan-index {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.5em;
+  color: #fff;
+  margin: 20px 0;
+  list-style: none;
+  padding: 0;
+}
+
+.texto-ingreso {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.play-button2 {
+  font-family: "Poppins", sans-serif;
+  margin-top:5%;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #0077ff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 14s ease;
+  text-decoration: none;
+  width:50%;
+  align-self: center;
+
+}
+.play-button3 {
+  font-family: "Poppins", sans-serif;
+  margin-top:5%;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #0077ff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 14s ease;
+  text-decoration: none;
+  width:50%;
+  align-self: center;
+
+}
+
+.play-button2:hover {
+  background-color: #0056b3;
+}
+
+.header-landing {
+  background-color: rgb(125, 201, 204);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 800px; /* Limitar ancho */
+  margin-bottom: 20px; /* Espaciado inferior */
+}
+
+.divs-img-landing,
+.perfil-header-landing {
+  display: flex;
+  align-items: center;
+}
+
+.img-header-landing,
+.img-usu-landing {
+  width: 50px; /* Tamaño de la estrella y la foto de perfil */
+  height: 50px;
+  margin-right: 10px; /* Espaciado entre imagen y texto */
+}
+
+.punto-landing {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.nombre-usuarioo {
+  font-size: 1.5rem;
+  color: #000000;
+}
+.container-general-ruleta{
+  background-color: rgb(125, 201, 204);
+
+}
+.div-ranking-final{
+  padding-bottom:50%;
+  background-color: rgb(125, 201, 204);
+}
+.txt-nro-preg{
+  margin-left:45%;
+}
+.ayuda-momentopreg{
+  margin-bottom:50%;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 1.2em;
+  min-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-table thead tr {
+  background-color: cadetblue;
+  color: white;
+  text-align: left;
+  font-weight: bold;
+}
+
+.user-table th, .user-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.user-table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.user-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.user-table tbody tr:last-of-type {
+  border-bottom: 2px
+}
+
+.titulo-rank{
+  display: flex;
+  justify-content: center;
+}
+
+.user-table{
+  width: 60%;
+  margin-left:20%;
+  margin-bottom:3%;
+}
+/* Contenedor principal */
+.resultado-contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgb(125, 201, 204);
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+.resultado-titulo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nombre-usuarioo {
+  font-size: 2.5rem;
+  color: #000000; /* Color similar a "Cadet Blue" */
+  margin: 0;
+}
+
+.puntaje-partida {
+  font-size: 1.8rem;
+  color: #005f73; /* Azul oscuro */
+  margin: 10px 0;
+}
+
+/* Botón de volver */
+.resultado-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-volver {
+  background-color:cadetblue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+}
+
+.btn-volver:hover {
+  background-color: #468d98; /* Color más oscuro al hover */
+}
+
+/**/
+/* Sección principal */
+.back-respuestas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-color: rgb(125, 201, 204);
+  padding: 20px;
+}
+
+/* Estilo para resultados correctos */
+.resultado-correcto {
+  text-align: center;
+  color: #006400; /* Verde oscuro para respuestas correctas */
+}
+
+.titulo-correcto {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.puntaje-actual {
+  font-size: 1.5rem;
+  margin-top: 15px;
+}
+
+/* Estilo para resultados incorrectos */
+.resultado-incorrecto {
+  text-align: center;
+  color: #a60000; /* Rojo oscuro para respuestas incorrectas */
+}
+
+.titulo-incorrecto {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.respuesta-correcta-titulo {
+  font-size: 1.8rem;
+  margin-top: 10px;
 }
 

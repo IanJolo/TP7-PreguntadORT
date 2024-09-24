@@ -1,3 +1,5 @@
+
+<section class= "back-respuestas">
 @if (ViewBag.FueCorrecta == true)
 {
     <div class="resultado-correcto">
@@ -10,8 +12,9 @@ else
 {
     <div class="resultado-incorrecto">
         <h1>Respuesta Incorrecta</h1>
-        <h2>La respuesta correcta era:</h2>
+        <h2>La respuesta correcta era: @ViewBag.RespuestaCorrecta</h2>
         <p class="respuesta-correcta">@ViewBag.RespuestaCorrecta</p>
         <a href='@Url.Action("Fin","Home")' class="boton-terminar">Terminar Partida</a>
     </div>
 }
+</section>

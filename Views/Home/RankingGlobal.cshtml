@@ -1,0 +1,40 @@
+<section class="container-ruleta">
+
+<h2 class="titulo-rank">Ranking de Jugadores</h2>
+@{
+    var usuarios = ViewBag.Usuarios as List<TP7_PreguntadORT.Models.Usuario>;
+}
+
+<table class="user-table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Puntaje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (usuarios != null)
+        {
+            foreach (var usuario in usuarios)
+            {
+                if(usuario.puntaje==null){
+                    usuario.puntaje=0;
+                }
+                <tr>
+                    <td>@usuario.nombre</td>
+                    <td>@(usuario.puntaje.HasValue ? usuario.puntaje.Value.ToString() : "N/A")</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2">No hay usuarios disponibles.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+    <a href='@Url.Action("Index", "Home")' class="play-button3">Volver al inicio</a>
+
+<p class="div-ranking-final"></p>
+</section>

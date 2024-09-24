@@ -1,5 +1,12 @@
-<h1>@ViewBag.NombreUsuario</h1>
-<h1>Puntaje Conseguido en la partida: @ViewBag.Puntaje</h1>
-<a href='@Url.Action("LandingPage", "Home")'>Volver
-    <input type="hidden" name="nombreUsuario" value=@ViewBag.NombreUsuario>
-</a>
+<div class="resultado-contenedor">
+    <div class="resultado-titulo">
+        <h1 class="nombre-usuario">Nombre: @ViewBag.NombreUsuario</h1>
+        <h2 class="puntaje-partida">Puntaje conseguido en la partida: @ViewBag.Puntaje</h2>
+    </div>
+    <div class="resultado-form">
+        <form action='@Url.Action("LandingPage", "Home")'>
+            <input type="hidden" name="nombreUsuario" value=@ViewBag.NombreUsuario>
+            <input type="submit" class="btn-volver" value="Volver">
+        </form>
+    </div>
+</div>

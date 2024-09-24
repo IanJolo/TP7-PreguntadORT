@@ -37,6 +37,7 @@ public class HomeController : Controller
         return View("Creditos");
     }
     public IActionResult RankingGlobal(){
+        ViewBag.Usuarios=BD.ObtenerUsuarios();
         return View("RankingGlobal");
     }
     public IActionResult InicioSesion(){
@@ -49,12 +50,7 @@ public class HomeController : Controller
     public IActionResult LandingPage(string nombreUsuario){
         ViewBag.DatosUsuario=BD.ObtenerInfoUsuario(nombreUsuario);
         Juegos.CargarUsername(nombreUsuario);
-        if(ViewBag.DatosUsuario.puntaje==null){
-            ViewBag.DatosUsuario.puntaje=0;
-        }
-        if(ViewBag.DatosUsuario.racha==null){
-            ViewBag.DatosUsuario.racha=0;
-        }
+        
         return View("LandingPage");
     }
      public IActionResult Jugar(int categoria){
@@ -79,12 +75,15 @@ public class HomeController : Controller
         }else {
             Console.WriteLine("ERROR");
         }
-        ViewBag.Pregunta=Juegos.ObtenerProximaPregunta(idCategoRuleta);
-        ViewBag.CategoRuleta=idCategoRuleta;
-        
-         if(ViewBag.Pregunta==null){
-            return View("Fin"); 
-         }else {
+       ViewBag.Pregunta = Juegos.ObtenerProximaPregunta(idCategoRuleta);
+    ViewBag.CategoRuleta = idCategoRuleta;
+
+if (ViewBag.Pregunta == null)
+{
+    ViewBag.NombreUsuario=Juegos.username;
+    ViewBag.Puntaje=Juegos.puntajeActual;
+    return View("Fin");
+}else {
             ViewBag.NombreUsuario=Juegos.username;
             ViewBag.Puntaje=Juegos.puntajeActual;
             ViewBag.Contador=Juegos.contador+1;
@@ -108,8 +107,8 @@ public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta, int idC
     if(ViewBag.FueCorrecta==false){
         puntaje=Juegos.puntajeActual;
         nombre=Juegos.username;
-        BD.ActualizarPuntaje(puntaje, nombre);
     }
+BD.ActualizarPuntaje(puntaje, nombre);
      ViewBag.Contador=Juegos.contador;
     ViewBag.Puntaje=Juegos.puntajeActual;
     return View("Respuesta");
@@ -124,16 +123,6 @@ public IActionResult Fin(){
     ViewBag.Puntaje=Juegos.puntajeActual;
     return View("Fin");
 }
-
-
-
-
-
-
-
-
-
-
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
