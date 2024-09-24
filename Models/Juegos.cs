@@ -36,8 +36,10 @@ public class Juegos{
         if(key==CateRuleta){
             lalista=preguntas[key];
         }
+    }
+    if(lalista!=null){
+    Pregunta=lalista[0];     
     }  
-    Pregunta=lalista[0];         
     return Pregunta;
  }
 public static List<Respuestas>? ObtenerProximasRespuestas(int idPregunta){

@@ -104,7 +104,6 @@ public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta, int idC
             ViewBag.RespuestaCorrecta=respuesta;
         }
     }
-    ViewBag.Puntaje=Juegos.puntajeActual;
     ViewBag.FueCorrecta=Juegos.VerificarRespuesta(idPregunta,idRespuesta, idCategoria);
     if(ViewBag.FueCorrecta==false){
         puntaje=Juegos.puntajeActual;
@@ -112,6 +111,7 @@ public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta, int idC
         BD.ActualizarPuntaje(puntaje, nombre);
     }
      ViewBag.Contador=Juegos.contador;
+    ViewBag.Puntaje=Juegos.puntajeActual;
     return View("Respuesta");
 }
 
