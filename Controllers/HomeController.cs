@@ -48,6 +48,7 @@ public class HomeController : Controller
     }
     public IActionResult LandingPage(string nombreUsuario){
         ViewBag.DatosUsuario=BD.ObtenerInfoUsuario(nombreUsuario);
+        Juegos.CargarUsername(nombreUsuario);
         if(ViewBag.DatosUsuario.puntaje==null){
             ViewBag.DatosUsuario.puntaje=0;
         }
@@ -57,16 +58,12 @@ public class HomeController : Controller
         return View("LandingPage");
     }
      public IActionResult Jugar(int categoria){
-        ViewBag.DatosUsuario=BD.ObtenerInfoUsuario(nombreUsuario);
-        if(categoria==-1){
-            return View("Juego");
-        }else{
-            return Redirect(Url.Action("MomentoPreg", "Home"));
-            
+        ViewBag.NombreUsuario=Juegos.username;
+        ViewBag.Puntaje=Juegos.puntajeActual;
+        if(ViewBag.Puntaje==null){
+            ViewBag.Puntaje=0;
         }
-        
-        
-       
+        return View("Juego"); 
     }
 
     public IActionResult MomentoPreg(string nombrecategoria){
@@ -84,15 +81,21 @@ public class HomeController : Controller
         }
         ViewBag.Pregunta=Juegos.ObtenerProximaPregunta(idCategoRuleta);
         ViewBag.CategoRuleta=idCategoRuleta;
+        
          if(ViewBag.Pregunta==null){
             return View("Fin"); 
          }else {
+            ViewBag.NombreUsuario=Juegos.username;
+            ViewBag.Puntaje=Juegos.puntajeActual;
+            ViewBag.Contador=Juegos.contador+1;
             ViewBag.Respuestas=Juegos.ObtenerProximasRespuestas(ViewBag.Pregunta.IdPregunta);      
         return View("MomentoPreg");
         }
     }
 [HttpPost]
 public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta, int idCategoria){
+    int puntaje=0;
+    string nombre="";
     List<Respuestas> listaRespuestas=new List<Respuestas>();
     listaRespuestas=Juegos.ObtenerRespuestas();
     ViewBag.respuestas = listaRespuestas;
@@ -101,11 +104,14 @@ public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta, int idC
             ViewBag.RespuestaCorrecta=respuesta;
         }
     }
+    ViewBag.Puntaje=Juegos.puntajeActual;
     ViewBag.FueCorrecta=Juegos.VerificarRespuesta(idPregunta,idRespuesta, idCategoria);
-    int puntaje=Juegos.ObtenerPuntaje();
-     ViewBag.Puntaje=puntaje;
-     int contador=Juegos.ObtenerContador();
-     ViewBag.Contador=contador;
+    if(ViewBag.FueCorrecta==false){
+        puntaje=Juegos.puntajeActual;
+        nombre=Juegos.username;
+        BD.ActualizarPuntaje(puntaje, nombre);
+    }
+     ViewBag.Contador=Juegos.contador;
     return View("Respuesta");
 }
 
@@ -113,6 +119,11 @@ public IActionResult Juego(){
     return View("Juego");
 }
 
+public IActionResult Fin(){
+    ViewBag.NombreUsuario=Juegos.username;
+    ViewBag.Puntaje=Juegos.puntajeActual;
+    return View("Fin");
+}
 
 
 

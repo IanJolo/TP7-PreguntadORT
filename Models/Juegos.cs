@@ -1,8 +1,8 @@
 namespace TP7_PreguntadORT.Models;
 
 public class Juegos{
-    private static string? username {get;set;}
-    private static int puntajeActual{get;set;}
+    public  static string? username {get;set;}
+    public static int puntajeActual{get;set;}
     private static int cantidadPreguntasCorrectas{get;set;}
     private static Dictionary<int,List<Preguntas>> preguntas{get;set;}
     private static List<Respuestas>? respuestas{get;set;}
@@ -11,7 +11,6 @@ public class Juegos{
     public static void InicializarJuego()
     {
         contador=0;
-        username= null; 
         puntajeActual=0;
         cantidadPreguntasCorrectas= 0;
         preguntas= null;
@@ -53,9 +52,9 @@ public static bool VerificarRespuesta(int idPregunta, int idRespuesta, int idCat
             {
             esCorrecto=true;
             cantidadPreguntasCorrectas++;
-            if(preguntas[idCategoria][contador].IdDificultad==1){
+            if(preguntas[idCategoria][0].IdDificultad==1){
             puntajeActual=puntajeActual+100;
-            }else if(preguntas[idCategoria][contador].IdDificultad==2){
+            }else if(preguntas[idCategoria][0].IdDificultad==2){
             puntajeActual=puntajeActual+250;
             }else {
             puntajeActual=puntajeActual+500;   
@@ -78,5 +77,8 @@ public static int ObtenerPuntaje(){
 }
 public static int ObtenerContador(){
     return contador;
+}
+public static void CargarUsername(string usernamee){
+    username=usernamee;
 }
 }

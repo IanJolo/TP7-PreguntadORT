@@ -1,4 +1,5 @@
-<h1>@ViewBag.DatosUsuario.Nombre</h1>
-<img src=@ViewBag.DatosUsuario.Foto>
-<h1>@ViewBag.Puntaje</h1>
-<a href='@Url.Action("LandingPage", "Home")'>Volver</a>
+<h1>@ViewBag.NombreUsuario</h1>
+<h1>Puntaje Conseguido en la partida: @ViewBag.Puntaje</h1>
+<a href='@Url.Action("LandingPage", "Home")'>Volver
+    <input type="hidden" name="nombreUsuario" value=@ViewBag.NombreUsuario>
+</a>

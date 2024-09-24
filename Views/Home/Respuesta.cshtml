@@ -2,7 +2,8 @@
 {
     <div class="resultado-correcto">
         <h1>¡Respuesta Correcta!</h1>
-        <a href='@Url.Action("Juego","Home")' class="boton-siguiente">Siguiente Pregunta</a>
+        <a href='@Url.Action("Jugar","Home")' class="boton-siguiente">Siguiente Pregunta</a>
+        <p>Tu puntaje actual es: @ViewBag.Puntaje</p>
     </div>
 }
 else
