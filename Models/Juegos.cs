@@ -31,23 +31,19 @@ public class Juegos{
 }
  public static Preguntas ObtenerProximaPregunta(int CateRuleta)
 {
-    // Inicializamos la variable de pregunta en null
     Preguntas pregunta = null;
 
-    // Verificamos si la clave existe en el diccionario
     if (preguntas.ContainsKey(CateRuleta))
     {
         List<Preguntas> lalista = preguntas[CateRuleta];
 
-        // Verificamos que la lista no sea null y que tenga al menos un elemento
         if (lalista != null && lalista.Count > 0)
         {
-            pregunta = lalista[0];  // Obtenemos la primera pregunta
-            lalista.RemoveAt(0);    // Eliminamos la pregunta de la lista
+            pregunta = lalista[0];  
+            lalista.RemoveAt(0);    
         }
     }
 
-    // Retornamos null si no se encontró una pregunta
     return pregunta;
 }
 
@@ -67,9 +63,7 @@ public static bool VerificarRespuesta(int idPregunta, int idRespuesta, int idCat
         {
             esCorrecto = true;
             cantidadPreguntasCorrectas++;
-
-
-            if (preguntas.ContainsKey(idCategoria) && preguntas[idCategoria].Count > 0)
+            if (preguntas[idCategoria].Count > 0)
             {
                 if (preguntas[idCategoria][0].IdDificultad == 1)
                 {
@@ -86,7 +80,6 @@ public static bool VerificarRespuesta(int idPregunta, int idRespuesta, int idCat
 
                 contador++;
 
-                // Buscar y eliminar la pregunta
                 var objetoAEliminar = preguntas[idCategoria].FirstOrDefault(o => o.IdPregunta == idPregunta);
                 preguntas[idCategoria].Remove(objetoAEliminar);
                 

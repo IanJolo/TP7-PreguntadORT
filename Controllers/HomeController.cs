@@ -95,12 +95,13 @@ if (ViewBag.Pregunta == null)
 public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta, int idCategoria){
     int puntaje=0;
     string nombre="";
+    Respuestas respuestitia=new Respuestas();
     List<Respuestas> listaRespuestas=new List<Respuestas>();
     listaRespuestas=Juegos.ObtenerRespuestas();
     ViewBag.respuestas = listaRespuestas;
     foreach(Respuestas respuesta in listaRespuestas){
-        if(respuesta.IdRespuesta == idRespuesta && respuesta.Correcta==true){
-            ViewBag.RespuestaCorrecta=respuesta;
+        if(respuesta.Correcta==true){
+            respuestitia=respuesta;
         }
     }
     ViewBag.FueCorrecta=Juegos.VerificarRespuesta(idPregunta,idRespuesta, idCategoria);
@@ -111,6 +112,7 @@ public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta, int idC
 BD.ActualizarPuntaje(puntaje, nombre);
      ViewBag.Contador=Juegos.contador;
     ViewBag.Puntaje=Juegos.puntajeActual;
+    ViewBag.RespuestaCorrecta=respuestitia;
     return View("Respuesta");
 }
 
